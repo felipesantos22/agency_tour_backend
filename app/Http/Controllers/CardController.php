@@ -28,4 +28,20 @@ class CardController extends Controller
         $card->delete();
         return response()->json(['message' => 'Task deletada!']);
     }
+
+
+    // Rotas Blade
+
+    public function indexWeb()
+    {
+        $card = Card::all();
+        return view('home', compact('card'));
+    }
+
+
+    public function createWeb(Request $request)
+    {
+        $card = Card::create($request->all());
+        return view('home');
+    }
 }
