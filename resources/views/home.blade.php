@@ -19,19 +19,21 @@
             <input type="text" class="form-control" id="name" name="name">
         </div>
         <div class="mb-3">
-            <label for="content" class="form-label">País</label>
-            <input type="text" class="form-control" id="content" name="content">
+            <label for="description" class="form-label">País</label>
+            <input type="text" class="form-control" id="description" name="description">
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Descrição</label>
+            <label for="content" class="form-label">Descrição</label>
             {{-- <input type="text" class="form-control" id="description" name="description"> --}}
-            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            <textarea class="form-control" id="content" name="content" rows="3"></textarea>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">URl da Imagem</label>
             <input type="text" class="form-control" id="image" name="image">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
 
     @foreach ($card as $cards)

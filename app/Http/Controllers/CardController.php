@@ -42,6 +42,6 @@ class CardController extends Controller
     public function createWeb(Request $request)
     {
         $card = Card::create($request->all());
-        return view('home');
+        return redirect('/');
     }
 }
