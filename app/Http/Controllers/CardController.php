@@ -44,4 +44,12 @@ class CardController extends Controller
         $card = Card::create($request->all());
         return redirect('/');
     }
+
+     //Web
+     public function destroyWeb($id)
+     {
+         $tasks = Card::findOrFail($id);
+         $tasks->delete();
+         return redirect('/');
+     }
 }

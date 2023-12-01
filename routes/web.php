@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CardController::class, 'indexWeb']);
 Route::post('/', [CardController::class, 'createWeb']);
+Route::delete('/{id}', [CardController::class, 'destroyWeb']);

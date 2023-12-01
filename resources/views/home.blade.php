@@ -37,7 +37,7 @@
     </form>
 
     @foreach ($card as $cards)
-        <div class="row row-cols-4 row-cols-md-4 g-4">
+        <div class="row row-cols-2 row-cols-md-6 g-2">
             <div class="col">
                 <div class="card">
                     <img src="{{ $cards->image }}" class="card-img-top" alt="...">
@@ -48,6 +48,11 @@
                 </div>
             </div>
         </div>
+        <form action="{{ url("/$cards->id") }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-outline-danger">Deletar</button>
+        </form>
     @endforeach
 
 </body>
