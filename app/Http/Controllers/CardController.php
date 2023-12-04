@@ -14,10 +14,15 @@ class CardController extends Controller
     }
 
     public function index()
-    {
-        $card = Card::all();
-        return $card;
+{
+    try {
+        $cards = Card::orderBy('description', 'asc')->get();
+        return response()->json($cards);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Erro ao recuperar os cards.'], 500);
     }
+}
+
 
     public function destroy($id)
     {
@@ -27,6 +32,17 @@ class CardController extends Controller
         }
         $card->delete();
         return response()->json(['message' => 'Task deletada!']);
+    }
+
+    public function show(Request $request)
+    {
+        try {
+            $description = $request->input('description');
+            $descriptions = Card::where('description', 'ilike', "%$description%")->get();
+            return response()->json(['País' => $descriptions]);
+        } catch (ValidationException $e) {
+            return response()->json(['error' => 'O parâmetro "description" é obrigatório.'], 400);
+        }
     }
 
 
@@ -45,11 +61,11 @@ class CardController extends Controller
         return redirect('/');
     }
 
-     //Web
-     public function destroyWeb($id)
-     {
-         $tasks = Card::findOrFail($id);
-         $tasks->delete();
-         return redirect('/');
-     }
+    //Web
+    public function destroyWeb($id)
+    {
+        $tasks = Card::findOrFail($id);
+        $tasks->delete();
+        return redirect('/');
+    }
 }

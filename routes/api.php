@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/', [CardController::class, 'index']);
 Route::post('/', [CardController::class, 'create']);
+Route::get('/search', [CardController::class, 'show']);
 Route::delete('/{id}', [CardController::class, 'destroy']);
